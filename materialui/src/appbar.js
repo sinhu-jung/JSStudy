@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 const StyledAppBar = styled(AppBar)`
   && {
-    background-color: #00ff00;
-    color: rebeccapurple;
+    background-color: #000;
+    color: #ff99a0;
   }
 `;
 
@@ -18,7 +18,7 @@ export default function abbbar() {
     };
     return(
         <StyledAppBar position="static">
-            <Tabs value={value} onChange={handleChange} aria-label="Main Tabs">
+            <Tabs value={value} onChange={ handleChange } aria-label="Main Tabs">
                 <Tab label="Home" icon={<Home />} />
                 <Tab label="Send" icon={<Send />} />
                 <Tab label="Profile" icon={<Person />} />
