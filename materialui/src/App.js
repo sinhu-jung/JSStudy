@@ -1,22 +1,10 @@
 import React, {Fragment} from 'react';
-import { AppBar, Tabs, Tab } from "@material-ui/core";
+import Appbar from './appbar';
 
-export default function () {
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event, newValue) => {
-          setValue(newValue);
-    };
-
+export default function App() {
     return (
         <Fragment>
-            <AppBar position="static">
-                <Tabs value={value} onChange={handleChange} aria-label="Main Tabs">
-                    <Tab label="Home" />
-                    <Tab label="Send" />
-                    <Tab label="Profile" />
-                </Tabs>
-            </AppBar>
+            <Appbar />
         </Fragment>
     );
 }
