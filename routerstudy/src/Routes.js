@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Route } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import SignIn from './view/SignIn';
 import Home from './view/Home';
 
 export default class Routes extends Component {
     render() {
         return (
-            <main>
-                <Route exact path="/" component={SignIn} />
-                <Route exact path="/Home" component={Home} />
-            </main>
+            <Router>
+                <main>
+                    <Route exact path="/" component={SignIn} />
+                    <Route exact path="/Home" component={Home} />
+                </main>
+            </Router>
         );
     }
 }
