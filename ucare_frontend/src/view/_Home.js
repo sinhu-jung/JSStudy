@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
-import clsx from 'clsx';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Footter from '../include/Footer';
+import Footer from '../include/Footer';
 import Header from '../include/Header';
 import Navigation from '../include/Navigation';
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +40,7 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
           </Grid>
-          <Footter />
+          <Footer />
         </Container>
       </main>
     </div>
