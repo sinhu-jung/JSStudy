@@ -35,9 +35,7 @@ const useStyles = makeStyles((theme) => ({
     width: '30%',
     fontSize: '16px',
     fontWeight: '600',
-  },
-
-
+  }
 }));
 
 
@@ -60,7 +58,7 @@ export default function NewPatient() {
     return(
         <div className={classes.root} >
         <div className={classes.input} >
-        <p style={{marginBottom: '2px'}}>이름</p>
+        <p style={{marginBottom: '2px', marginLeft: '5px'}}>이름</p>
         <TextField style={{width: '100%', backgroundColor: '#FFFFFF'}} id="outlined-name" variant="outlined" />
         </div>
         <div className={classes.input} >

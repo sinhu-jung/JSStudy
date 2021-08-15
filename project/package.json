@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run debug",
-    "debug": "cross-env NODE_ENV=development webpack serve --config config/webpack.config.js --mode development --progress",
-    "build": "npx webpack --mode production"
+    "postinstall": "npm run build",
+    "build": "npm run build:frontend",
+    "build:backend": "cd ucare_backend && mvn -N io.takari:maven:wrapper",
+    "build:frontend": "cross-env NODE_ENV=production webpack --config ucare_frontend/config/webpack.config.js --mode production --progress",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" --kill-others",
+    "dev:backend": "cd ucare_backend && mvn org.springframework.boot:spring-boot-maven-plugin:run",
+    "dev:frontend": "cross-env NODE_ENV=development webpack serve --config ucare_frontend/config/webpack.config.js --mode development --progress"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +31,7 @@
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
+    "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",
     "file-loader": "^6.2.0",

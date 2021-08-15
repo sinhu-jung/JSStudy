@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Footer from '../include/Footer';
 import Header from '../include/Header';
 import Navigation from '../include/Navigation';
-import { Button } from '@material-ui/core';
+import Reservation from './Reservation';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,9 +45,7 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <Button href="/" onClick={logout}>
-               logout!
-            </Button>
+            <Reservation/>
           </Grid>
           <Footer />
         </Container>
