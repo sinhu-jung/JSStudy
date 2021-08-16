@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.douzone.ucare.vo.UserVo;
+import com.douzone.ucare.vo.ReservationVo;
 
 @Repository
 public class UserRepository {
@@ -45,6 +46,11 @@ public class UserRepository {
 
 	public UserVo findUser(UserVo user) {
 		return sqlSession.selectOne("user.findUser", user);
+	}
+
+	public Boolean addReservation(ReservationVo user){
+		int count = sqlSession.insert("user.reservationInsert", user);
+		return count == 1;
 	}
 
 }

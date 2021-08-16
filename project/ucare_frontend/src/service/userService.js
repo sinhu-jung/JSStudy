@@ -23,6 +23,10 @@ class userService {
   editUser(user){
     return axios.put(USER_API_BASE_URL + '/' + user.id, user)
   }
+  
+  reservation(user){
+    return axios.post(USER_API_BASE_URL + '/reservation', user);
+  }
 
 }
 

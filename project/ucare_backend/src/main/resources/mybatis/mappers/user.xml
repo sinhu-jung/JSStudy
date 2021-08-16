@@ -24,4 +24,16 @@
 		WHERE id = #{id }
 		  AND password = #{password }
 	</select>
+
+	<insert id="reservationInsert" parameterType="uservo">
+		INSERT
+			INTO ucare.reservation(name, ssn, tel_no, date, time)
+		VALUES(
+			#{name },
+			#{ssn },
+			#{telNo },
+			#{date },
+			#{time }
+		)
+	</insert>
 </mapper>

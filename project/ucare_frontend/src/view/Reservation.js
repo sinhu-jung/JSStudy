@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import userService from '../service/userService';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,8 +19,11 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-export default function Reservation(){
+export default function Reservation( ){
     const classes = useStyles();
+    const [name, setName] = useState('');
+    const [ssn, setSsn] = useState('');
+    const [telNo, setTelNo] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState(''); 
 
@@ -36,6 +40,24 @@ export default function Reservation(){
         setTime(`${hours}:${minutes}`);
     }, [])
 
+    const reservation = (e) => {
+        let user = {
+            name: name,
+            ssn: ssn,
+            telNo: telNo,
+            date: date,
+            time: time
+          }
+
+        userService.reservation(user)
+            .then( res => {
+              console.log(user.name + '님이 성공적으로 등록되었습니다.');
+          })
+          .catch( err => {
+            console.log('reservation() 에러', err);
+        });
+    }
+
     return(
         <div className={classes.root} >
             <div className={classes.input} >
@@ -49,6 +71,8 @@ export default function Reservation(){
                     label="name"
                     name="name"
                     autoComplete="name"
+                    value={ name }
+                    onChange={ (e) => { setName(e.target.value) } }
                     autoFocus
                 />
                 <p style={{marginTop:'20px', marginBottom:'8px', marginLeft:'10px'}}>주민등록번호</p>
@@ -61,6 +85,8 @@ export default function Reservation(){
                     label="주민등록번호"
                     name="ssn"
                     autoComplete="ssn"
+                    value={ ssn }
+                    onChange={ (e) => { setSsn(e.target.value) } }
                     autoFocus
                 />
 
@@ -74,6 +100,8 @@ export default function Reservation(){
                     label="전화번호"
                     name="telNo"
                     autoComplete="telNo"
+                    value={ telNo }
+                    onChange={ (e) => { setTelNo(e.target.value) } }
                     autoFocus
                 />
 
@@ -108,8 +136,15 @@ export default function Reservation(){
                         sx={{ width: 150 }}
                     />
                 </form>
-
-                <Button style={{width: '100%', marginTop: '20px'}} variant="contained" color="primary" disableElevation>
+                <Button 
+                    href="/Home"
+                    type="submit"
+                    style={{width: '100%', marginTop: '20px'}} 
+                    variant="contained" 
+                    color="primary"
+                    onClick={ reservation } 
+                    disableElevation
+                >
                     예약하기
                 </Button>
             </div>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.douzone.ucare.repository.UserRepository;
 import com.douzone.ucare.vo.UserVo;
+import com.douzone.ucare.vo.ReservationVo;
 
 @Service
 public class UserService {
@@ -37,6 +38,10 @@ public class UserService {
 
 	public UserVo login(UserVo user) {
 		return userRepository.findUser(user);
+	}
+
+	public Boolean addReservation(ReservationVo user){
+		return userRepository.addReservation(user);
 	}
 
 }
