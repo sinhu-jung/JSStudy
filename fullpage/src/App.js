@@ -9,12 +9,13 @@ export default function App() {
     return (
         <ReactFullpage
         scrollOverflow={true}
+        anchors={["orange", "purple", "green"]}
         sectionsColor={["orange", "purple", "green"]}
         render={({ state, fullpageApi }) => {
           return (
             <div id="fullpage-wrapper">
               <div className="section section1">
-                <h3>Section 1</h3>
+                <h3>Section 1<a href="#green">!!!!</a></h3>
               </div>
               <div className="section">
                 <div className="slide">
